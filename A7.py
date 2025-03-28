@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 from dash import dcc, html, Input, Output, State 
+import os
 
 
 # Creating a DataFrame for the World Cup winners
@@ -121,4 +122,9 @@ def update_year(selected_year):
     return f"In {selected_year}, the winner was {winner} and the runner-up was {runner_up}."
 
 
-app.run(debug=True)
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))  # Use PORT from Render, default to 10000
+    app.run(host="0.0.0.0", port=port, debug=True)
+
